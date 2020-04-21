@@ -1,0 +1,73 @@
+﻿@model OnlineLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+<h1>Details</h1>
+@{string imagepath = Model.Img;}
+<text><img src=~/Images/@imagepath align="right" height="300" width="200" style="margin-right:30%;margin-top:60px" /></text>
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReleaseDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReleaseDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PublishingHouse)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PublishingHouse)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Collection)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Collection)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="AddReview" asp-route-id="@Model.Id">Add Review</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<h1>Reviews: </h1>
+@foreach (var item in Model.Reviews)
+{
+    <div style="padding:20px;border:solid">
+        <h7>User Name:</h7>
+        <p>@Html.DisplayFor(modelItem => item.UserName)</p>
+        <h7>Date: </h7>
+        <p>@Html.DisplayFor(modelItem => item.Date)</p>
+        <h7>Content: </h7>
+        <p>@Html.DisplayFor(modelItem => item.Content)</p>
+        <h7>Rating: </h7>
+        @for (int i = 0; i < item.Rating; i++)
+        {
+            <text><img width="30" height="30" src="~/Images/stars.png" /></text>
+        }
+    </div>
+}

@@ -1,0 +1,20 @@
+﻿@model IEnumerable<OnlineLibrary.Models.Book>
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div style="background-image:url('../Images/welcome.jpg');border:double; height:157px;width: 1000px;text-align:center">
+    <text style="text-shadow: 2px 2px #000000; position: center; font-size: 60px; color: white"><b>Welcome!</b></text>
+    <p style="text-shadow: 2px 2px #000000;color:white;position:center;font-size:30px">All the books you love in one place!</p>
+</div>
+
+<h3>Latest books:</h3>
+@{var i = 0; }
+@foreach(var item in Model)
+{
+    i++;
+    if (i > 10)
+        break;
+    string imagepath = item.Img;
+    <a asp-controller="Books" asp-action="Details" asp-route-id="@item.Id"><img src=~/Images/@imagepath height="200" width="100" /></a>
+}
+

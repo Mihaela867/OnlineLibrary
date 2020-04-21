@@ -1,0 +1,63 @@
+﻿@model OnlineLibrary.Models.Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReleaseDate" class="control-label"></label>
+                <input asp-for="ReleaseDate" class="form-control" />
+                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input hidden asp-for="AddedDate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="PublishingHouse" class="control-label"></label>
+                <input asp-for="PublishingHouse" class="form-control" />
+                <span asp-validation-for="PublishingHouse" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Collection" class="control-label"></label>
+                <input asp-for="Collection" class="form-control" />
+                <span asp-validation-for="Collection" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input hidden asp-for="Rating" class="form-control" />
+            </div>
+            <div>
+                <label>Book cover:</label></br>
+                <input type="file" name="pic" />
+            </div>
+            <div class="form-group">
+                <input type="submit" asp-route-id="pic" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
